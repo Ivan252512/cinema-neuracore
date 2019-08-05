@@ -46,7 +46,7 @@ class SeatViewSet(viewsets.ModelViewSet):
                 #Unsold tickets
                 unsold = []
                 for seat in queryset:
-                    if not Sale.objects.filter(seat_id=seat.id).exists():
+                    if not Sale.objects.filter(seat=seat).exists():
                         unsold.append(seat)
                 return unsold
             else:
