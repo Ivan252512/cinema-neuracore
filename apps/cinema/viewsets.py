@@ -20,7 +20,7 @@ class ScheduleViewSet(viewsets.ModelViewSet):
         #Filtering with movie title
         if movie_id is not None:
             if Movie.objects.filter(id=movie_id).exists():
-                queryset = queryset.filter(movie_id=movie_id, schedule__lte=timezone.localtime())
+                queryset = queryset.filter(movie_id=movie_id, schedule__gte=timezone.localtime())
             else:
                 return queryset.none()
 
@@ -46,7 +46,7 @@ class SeatViewSet(viewsets.ModelViewSet):
                 #Unsold tickets
                 unsold = []
                 for seat in queryset:
-                    if not Sale.objects.filter(seat=seat).exists():
+                    if not Sale.objects.filter(seat_id=seat).exists():
                         unsold.append(seat)
                 return unsold
             else:
