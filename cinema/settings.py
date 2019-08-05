@@ -49,7 +49,8 @@ INSTALLED_APPS = [
 
 CORS_ORIGIN_WHITE_LIST = (
     'localhost:8000',
-    '127.0.0.1:8000'
+    '127.0.0.1:8000',
+    'https://cinema-app-neuracore.herokuapp.com/',
 )
 
 MIDDLEWARE = [
